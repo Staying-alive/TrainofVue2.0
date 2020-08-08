@@ -9,9 +9,22 @@
 </head>
 
 <body>
-
+    <div id="app">
+        <button v-on:click="show=!show">click me</button>
+        <br/>
+        <h1 v-if="show">you can see me as if result is true</h1>
+        <br/>
+        <h1 v-show="show"> you can see me as show result is true</h1>
+    </div>
     <script src="../node_modules/vue/dist/vue.js"></script>
-        
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                show:true
+            }
+        });
+    </script>
 </body>
 
 </html>

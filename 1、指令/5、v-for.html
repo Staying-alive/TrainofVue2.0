@@ -11,8 +11,17 @@
 <body>
     <div id ="app">
         <ul>
-            <li v-for="(user,cnt) in users">
+            <li v-for="(user,cnt) in users" v-bind:key="user.name" v-if="user.gender=='F'">
                 {{cnt + 1}} ==> {{user.name}} ==> {{user.gender}} ==> {{user.age}}
+                <br/>
+                <span v-for="(v,k,i) in user">
+                    {{i+1}}---{{k}}---{{v}}  
+                </span>
+            </li>
+        </ul>
+        <ul>
+            <li  v-for="(num,i) in nums" :key="i">
+                {{i+1}}, {{num}}
             </li>
         </ul>
     </div>
@@ -27,7 +36,8 @@
                     {name: "fanbingbing", gender:"F", age:18},
                     {name: "luyifei", gender:"F", age:20},
                     {name: "lisi", gender:"M", age:21},
-                ]
+                ],
+                nums:[1,2,3,4,4]
             }
         });
     </script>

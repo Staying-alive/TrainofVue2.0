@@ -7,11 +7,47 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-
+    <div id="app">
+        <ul>
+            <li v-for="user in userlist">
+                <!-- {{user.id}}==> {{user.name}}==> {{user.gender == 'F'?'woman':'man'}} -->
+                {{user.id}}==> {{user.name}}==> {{user.gender|gentleFilters}}<br/>
+                {{user.gender |gFilter}}
+            </li>
+        </ul>
+    </div>
 <body>
 
     <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        Vue.filter("gFilter", function(val){
+            if(val == "F"){
+                        return "woman!!!";
+                    }else{
+                        return "man!!!";
+                    }
+        });
 
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                userlist:[
+                    {id:1, name:"liuyifei", gender:"F"},
+                    {id:2, name:"zhangsan", gender:"M"},
+                    {id:3, name:"lisi", gender:"F"}
+                ]
+            },
+            filters: {
+                gentleFilters: function(val){
+                    if(val == "F"){
+                        return "woman";
+                    }else{
+                        return "man";
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
