@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id ="app">
+        <ul>
+            <li v-for="(user,cnt) in users">
+                {{cnt + 1}} ==> {{user.name}} ==> {{user.gender}} ==> {{user.age}}
+            </li>
+        </ul>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                users:[
+                    {name: "liuyan", gender:"F", age:27},
+                    {name: "zhangsan", gender:"M", age:15},
+                    {name: "fanbingbing", gender:"F", age:18},
+                    {name: "luyifei", gender:"F", age:20},
+                    {name: "lisi", gender:"M", age:21},
+                ]
+            }
+        });
+    </script>
+</body>
+
+</html>

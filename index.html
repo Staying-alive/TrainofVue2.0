@@ -7,15 +7,24 @@
 </head>
 <body>
     <div id="app">
-        <h1>hello, {{name}}</h1>
+        <input type="text" v-model="num">
+        <h1>Dear, {{name}}, you will get {{num}} points.</h1>
+        <button v-on:click="num++">add points</button>
+        <button v-on:click="cancel">discount points</button>
     </div>
     <script src="./node_modules/vue/dist/vue.js">
     </script>
-    <script>
+    <script> 
         let vm = new Vue({
             el:"#app",
             data:{
-                name: "zhangsan"
+                name: "dexter",
+                num: 10
+            },
+            methods:{
+                cancel(){
+                    this.num--;
+                }
             }
         });
     </script>

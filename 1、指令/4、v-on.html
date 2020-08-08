@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="like()">i like this</button>
+        <button @click="dislike()">i dislike this</button><br/><br/>
+        <h1>{{num}} people like it</h1>
+
+        <div style="border: 1px solid red;padding:20px;" @click.once="hello">
+            outer div
+            <div style="border: 1px solid blue;padding:20px;" @click.stop="hello">
+                inner div
+                <br/>
+                <a href="http://www.baidu.com" v-on:click.prevent.stop="hello">go to baidu</a>
+            </div>
+        </div>
+
+        <input type="text" v-model="num" v-on:keyup.up="num=num+2" @keyup.down="num=num-2" @keyup.alt.67="clear" @click.alt="num=20">
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                num:1
+            },
+            methods: {
+                like(){
+                    this.num++;
+                },
+                dislike(){
+                    this.num--;
+                },
+                hello(){
+                    alert("clicked!");
+                }, 
+                clear(){
+                    this.num=""
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>
